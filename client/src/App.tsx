@@ -1,4 +1,5 @@
 import Button from "./components/Button";
+import Modal from "./components/Modal";
 
 const App = () => {
   const name = "Ian";
@@ -15,6 +16,9 @@ const App = () => {
       <Button className="bg-red-500" onClick={() => console.log("test")}>
         <p>Hello</p>
       </Button>
+      <Modal>
+        <p>hello</p>
+      </Modal>
     </div>
   );
 };
