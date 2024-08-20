@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button from "./components/Button";
 import Modal from "./components/Modal";
 
@@ -10,14 +11,19 @@ const App = () => {
 
   test("ian", 24);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div>
       {name}
       <Button className="bg-red-500" onClick={() => console.log("test")}>
         <p>Hello</p>
       </Button>
-      <Modal>
-        <p>hello</p>
+      <Button onClick={() => setIsModalOpen(true)}>Open Modal</Button>
+      <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}>
+        <div className="border p-10 rounded-md bg-white">
+          <p>Modal</p>
+        </div>
       </Modal>
     </div>
   );
