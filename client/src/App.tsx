@@ -12,6 +12,7 @@ const App = () => {
   test("ian", 24);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [counter, setCounter] = useState(0);
 
   return (
     <div>
@@ -25,6 +26,9 @@ const App = () => {
           <p>Modal</p>
         </div>
       </Modal>
+      <p>Counter: {counter}</p>
+      <Button onClick={() => setCounter((c) => c - 1)}>Minus Count</Button>
+      <Button onClick={() => setCounter((c) => c + 1)}>Plus Count</Button>
     </div>
   );
 };
