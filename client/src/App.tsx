@@ -29,6 +29,7 @@ const App = () => {
       <Button onClick={() => setCounter((c) => c - 1)}>Minus Count</Button>
       <Button onClick={() => setCounter((c) => c + 1)}>Plus Count</Button>
       <GuessTheWord />
+      <p>Hi test</p>
     </div>
   );
 };
