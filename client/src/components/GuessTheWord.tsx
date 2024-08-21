@@ -1,15 +1,17 @@
 import { FormEvent, useState } from "react";
-import words from "../words";
+import words from "../utils/words";
 import Button from "./Button";
 
-const GuessTheWord = () => {
+type Props = {};
+
+export default function GuessTheWord({}: Props) {
   const generateWord = (): string[] => {
     return words[Math.floor(Math.random() * words.length)]
       .toUpperCase()
       .split("");
   };
   const [wordToGuess, setWordToGuess] = useState(generateWord());
-  const [tries, setTries] = useState(() => wordToGuess.length - 1);
+  const [tries, setTries] = useState(() => wordToGuess.length - 2);
   const [hint, setHint] = useState<string[]>(() =>
     Array.from({ length: wordToGuess.length })
   );
@@ -26,7 +28,6 @@ const GuessTheWord = () => {
       setTries((t) => t - 1);
       return;
     }
-
 
     setWon(true);
   };
@@ -103,6 +104,4 @@ const GuessTheWord = () => {
       )}
     </form>
   );
-};
-
-export default GuessTheWord;
+}
