@@ -15,28 +15,49 @@ const App = () => {
   const [counter, setCounter] = useState(0);
 
   // Guess the word
-  const generateWord = (): string => {
-    return words[Math.floor(Math.random() * words.length)];
+  const generateWord = (): string[] => {
+    return words[Math.floor(Math.random() * words.length)]
+      .toUpperCase()
+      .split("");
   };
   const [wordToGuess, setWordToGuess] = useState(generateWord());
   const [tries, setTries] = useState(() => wordToGuess.length - 1);
+  const [hint, setHint] = useState<string[]>(() =>
+    Array.from({ length: wordToGuess.length })
+  );
 
   const [userGuess, setUserGuess] = useState("");
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setUserGuess("");
-    if (userGuess.trim() === wordToGuess) {
+    if (userGuess.trim().toUpperCase() === wordToGuess.join("")) {
       console.log("won");
     } else {
+      giveHint();
       setTries((t) => t - 1);
     }
+  };
+
+  const giveHint = (): void => {
+    let index: number = 0;
+
+    do {
+      index = Math.floor(Math.random() * wordToGuess.length);
+    } while (hint[index]);
+
+    setHint((prevHint: string[]): string[] => {
+      const newHint = [...prevHint];
+      newHint[index] = wordToGuess[index];
+      return newHint;
+    });
   };
 
   const reset = (): void => {
     setWordToGuess(generateWord());
     setUserGuess("");
     setTries(() => wordToGuess.length - 1);
+    setHint([]);
   };
 
   return (
@@ -58,15 +79,16 @@ const App = () => {
         className="border border-black flex flex-col w-48 ml-2 mt-4 p-2"
       >
         <h1 className="mb-4">Guess the word</h1>
-        <div className="flex gap-2">
-          {wordToGuess.split("").map((_, index) => (
-            <span key={index} className="border-b border-black w-4"></span>
+        <div className="flex gap-2 w-full justify-between">
+          {hint.map((letter, index) => (
+            <span key={index} className="border-b border-black w-4 text-center">
+              {letter}
+            </span>
           ))}
         </div>
         {tries ? (
           <>
             <p className="mt-4">You only have {tries} tries</p>
-
             <input
               type="text"
               value={userGuess}
