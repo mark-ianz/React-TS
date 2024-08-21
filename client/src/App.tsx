@@ -25,18 +25,20 @@ const App = () => {
   const [hint, setHint] = useState<string[]>(() =>
     Array.from({ length: wordToGuess.length })
   );
+  const [won, setWon] = useState<boolean>(false);
 
   const [userGuess, setUserGuess] = useState("");
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setUserGuess("");
-    if (userGuess.trim().toUpperCase() === wordToGuess.join("")) {
-      console.log("won");
-    } else {
+    if (userGuess.trim().toUpperCase() !== wordToGuess.join("")) {
       giveHint();
       setTries((t) => t - 1);
+      return;
     }
+
+    win();
   };
 
   const giveHint = (): void => {
@@ -60,6 +62,8 @@ const App = () => {
     setHint([]);
   };
 
+  const win = (): void => {};
+
   return (
     <div>
       <Button className="bg-red-500" onClick={() => console.log("test")}>
@@ -81,7 +85,10 @@ const App = () => {
         <h1 className="mb-4">Guess the word</h1>
         <div className="flex gap-2 w-full justify-between">
           {hint.map((letter, index) => (
-            <span key={index} className="border-b border-black w-4 text-center text-red-500 font-bold">
+            <span
+              key={index}
+              className="border-b border-black w-4 text-center text-red-500 font-bold"
+            >
               {letter}
             </span>
           ))}
@@ -91,7 +98,7 @@ const App = () => {
             <p className="mt-4">You only have {tries} tries</p>
             <input
               type="text"
-              value={userGuess}
+              value={userGuess.toUpperCase()}
               className="border-b border-black outline-none mt-2"
               onChange={(e) => setUserGuess(e.target.value)}
             />
