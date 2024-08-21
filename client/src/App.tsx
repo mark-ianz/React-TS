@@ -81,7 +81,7 @@ const App = () => {
         <h1 className="mb-4">Guess the word</h1>
         <div className="flex gap-2 w-full justify-between">
           {hint.map((letter, index) => (
-            <span key={index} className="border-b border-black w-4 text-center">
+            <span key={index} className="border-b border-black w-4 text-center text-red-500 font-bold">
               {letter}
             </span>
           ))}
