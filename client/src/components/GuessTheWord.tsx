@@ -14,6 +14,7 @@ const GuessTheWord = () => {
     Array.from({ length: wordToGuess.length })
   );
   const [won, setWon] = useState<boolean>(false);
+  const [lost, setLost] = useState<boolean>(false);
 
   const [userGuess, setUserGuess] = useState("");
 
@@ -25,6 +26,7 @@ const GuessTheWord = () => {
       setTries((t) => t - 1);
       return;
     }
+
 
     setWon(true);
   };
@@ -92,6 +94,9 @@ const GuessTheWord = () => {
         </>
       ) : (
         <>
+          <p className="mt-2">
+            Word: <span className="font-bold">{wordToGuess}</span>
+          </p>
           <p className="text-center my-2">You lose</p>
           <Button onClick={reset}>Retry</Button>
         </>
