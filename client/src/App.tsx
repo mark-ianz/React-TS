@@ -38,7 +38,7 @@ const App = () => {
       return;
     }
 
-    win();
+    setWon(true);
   };
 
   const giveHint = (): void => {
@@ -59,10 +59,9 @@ const App = () => {
     setWordToGuess(generateWord());
     setUserGuess("");
     setTries(() => wordToGuess.length - 1);
-    setHint([]);
+    setHint(Array.from({ length: wordToGuess.length }));
+    setWon(false);
   };
-
-  const win = (): void => {};
 
   return (
     <div>
@@ -84,16 +83,30 @@ const App = () => {
       >
         <h1 className="mb-4">Guess the word</h1>
         <div className="flex gap-2 w-full justify-between">
-          {hint.map((letter, index) => (
-            <span
-              key={index}
-              className="border-b border-black w-4 text-center text-red-500 font-bold"
-            >
-              {letter}
-            </span>
-          ))}
+          {won
+            ? wordToGuess.map((letter, index) => (
+                <span
+                  key={index}
+                  className="border-b border-black w-4 text-center text-green-500 font-bold"
+                >
+                  {letter}
+                </span>
+              ))
+            : hint.map((letter, index) => (
+                <span
+                  key={index}
+                  className="border-b border-black w-4 text-center text-red-500 font-bold"
+                >
+                  {letter}
+                </span>
+              ))}
         </div>
-        {tries ? (
+        {won ? (
+          <>
+            <p className="text-center my-2">You won</p>
+            <Button onClick={reset}>Play Again</Button>
+          </>
+        ) : tries ? (
           <>
             <p className="mt-4">You only have {tries} tries</p>
             <input
@@ -105,7 +118,7 @@ const App = () => {
           </>
         ) : (
           <>
-            <p>You lose</p>
+            <p className="text-center my-2">You lose</p>
             <Button onClick={reset}>Retry</Button>
           </>
         )}
