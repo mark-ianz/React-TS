@@ -5,12 +5,12 @@ import GuessTheWord from "./components/GuessTheWord";
 import Test from "./components/Test";
 
 const App = () => {
-  /* const name = "Ian";
-  const test = (name: String = "tite", age: Number = 12) => {
+  /* const name = "XD";
+  const test = (name: String = "john", age: Number = 12) => {
     return console.log(name, age);
   };
 
-  test("ian", 24); */
+  test("doe", 24); */
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [counter, setCounter] = useState(0);
