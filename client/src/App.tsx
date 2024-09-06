@@ -37,6 +37,42 @@ const App = () => {
 
   const [users, setUsers] = useState<UserProps[]>([]);
 
+  setUsers((u) => {
+    return [
+      ...u,
+      {
+        username: "hi,",
+        exercises: [
+          {
+            _id: "123",
+            name: "Push up",
+            description: "Push day to ahwhwahaw",
+            sets: [
+              {
+                reps: 12,
+                weight: 100,
+                id: "2",
+              },
+            ],
+          },
+          {
+            _id: "123",
+            name: "Lateral Raise",
+            description: "Push day to ahwhwahaw",
+            sets: [
+              {
+                reps: 20,
+                weight: 20,
+                id: "3",
+              },
+            ],
+          },
+        ],
+        age: 12,
+        isAdmin: false,
+      },
+    ];
+  });
   return (
     <div>
       {users.map((user) => (
