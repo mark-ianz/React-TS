@@ -16,7 +16,7 @@ type ApiResponse = {
 };
 
 export default function Valorant({}: Props) {
-  const [agents, setAgents] = useState<Agents[]>();
+  const [agents, setAgents] = useState<Agents[]>([]);
 
   useEffect(() => {
     const fetchAgent = async () => {
@@ -47,7 +47,7 @@ export default function Valorant({}: Props) {
               >
                 <img
                   src={agent.displayIcon}
-                  alt={agent.displayName + "display icon"}
+                  alt={agent.displayName + " display icon"}
                   className="w-40 border rounded-full"
                 />
                 <p className="font-semibold mt-4 text-xl">
