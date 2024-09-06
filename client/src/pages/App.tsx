@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Button from "./components/Button";
-import Modal from "./components/Modal";
-import GuessTheWord from "./components/GuessTheWord";
-import Test from "./components/Test";
+import Button from "../components/Button";
+import Modal from "../components/Modal";
+import GuessTheWord from "../components/GuessTheWord";
+import Test from "../components/Test";
 
 type Set = {
   reps: number;
@@ -35,7 +35,7 @@ const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [counter, setCounter] = useState(0);
 
-  const [users, setUsers] = useState<UserProps[]>([
+  const [users, _] = useState<UserProps[]>([
     {
       username: "hi,",
       exercises: [

@@ -1,10 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import App from "./pages/App.tsx";
 import "./assets/index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./Layout.tsx";
-import LandingPage from "./LandingPage.tsx";
+import LandingPage from "./pages/LandingPage.tsx";
+import Valorant from "./pages/Valorant.tsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "playground",
         element: <App />,
+      },
+      {
+        path: "valorant",
+        element: <Valorant />,
       },
     ],
   },
