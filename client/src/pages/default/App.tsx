@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Button from "../components/Button";
-import Modal from "../components/Modal";
-import GuessTheWord from "../components/GuessTheWord";
-import Test from "../components/Test";
+import Button from "../../components/Button";
+import Modal from "../../components/Modal";
+import GuessTheWord from "../../components/GuessTheWord";
+import Test from "../../components/Test";
 
 type Set = {
   reps: number;

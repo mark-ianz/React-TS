@@ -1,12 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./pages/App.tsx";
+import App from "./pages/default/App.tsx";
 import "./assets/index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DefaultLayout from "./Layouts/DefaultLayout.tsx";
-import LandingPage from "./pages/LandingPage.tsx";
-import Valorant from "./pages/Valorant.tsx";
-import ViewAgent from "./pages/ViewAgent.tsx";
+import LandingPage from "./pages/default/LandingPage.tsx";
+import Valorant from "./pages/default/Valorant.tsx";
+import ViewAgent from "./pages/default/ViewAgent.tsx";
+import ShopLayout from "./Layouts/ShopLayout.tsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         element: <ViewAgent />,
       },
     ],
+  },
+  {
+    path: "/shop",
+    element: <ShopLayout />,
   },
 ]);
 
