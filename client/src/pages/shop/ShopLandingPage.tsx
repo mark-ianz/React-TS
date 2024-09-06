@@ -38,7 +38,7 @@ export default function ShopLandingPage({}: Props) {
           {products.map((product) => (
             <li key={product.id}>
               <div>
-                {product.images.map((image, index) => (
+                {product.images.map((image) => (
                   <p>{image}</p>
                 ))}
               </div>
