@@ -1,9 +1,24 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {};
 
+type Category = {
+  id: number;
+  name: string;
+  image: string;
+};
+
+type Product = {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: Category;
+  images: string[];
+};
+
 export default function ShopLandingPage({}: Props) {
-  const [productes, setProducts] = useState([]);
+  const [productes, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
