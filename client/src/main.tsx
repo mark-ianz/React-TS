@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import App from "./pages/App.tsx";
 import "./assets/index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./Layout.tsx";
+import DefaultLayout from "./Layouts/DefaultLayout.tsx";
 import LandingPage from "./pages/LandingPage.tsx";
 import Valorant from "./pages/Valorant.tsx";
 import ViewAgent from "./pages/ViewAgent.tsx";
@@ -11,7 +11,7 @@ import ViewAgent from "./pages/ViewAgent.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <DefaultLayout />,
     children: [
       {
         index: true,
