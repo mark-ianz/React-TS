@@ -35,51 +35,47 @@ const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [counter, setCounter] = useState(0);
 
-  const [users, setUsers] = useState<UserProps[]>([]);
+  const [users, setUsers] = useState<UserProps[]>([
+    {
+      username: "hi,",
+      exercises: [
+        {
+          _id: "123",
+          name: "Push up",
+          description: "Push day to ahwhwahaw",
+          sets: [
+            {
+              reps: 12,
+              weight: 100,
+              id: "2",
+            },
+          ],
+        },
+        {
+          _id: "123",
+          name: "Lateral Raise",
+          description: "Push day to ahwhwahaw",
+          sets: [
+            {
+              reps: 20,
+              weight: 20,
+              id: "3",
+            },
+          ],
+        },
+      ],
+      age: 12,
+      isAdmin: false,
+    },
+  ]);
 
-  setUsers((u) => {
-    return [
-      ...u,
-      {
-        username: "hi,",
-        exercises: [
-          {
-            _id: "123",
-            name: "Push up",
-            description: "Push day to ahwhwahaw",
-            sets: [
-              {
-                reps: 12,
-                weight: 100,
-                id: "2",
-              },
-            ],
-          },
-          {
-            _id: "123",
-            name: "Lateral Raise",
-            description: "Push day to ahwhwahaw",
-            sets: [
-              {
-                reps: 20,
-                weight: 20,
-                id: "3",
-              },
-            ],
-          },
-        ],
-        age: 12,
-        isAdmin: false,
-      },
-    ];
-  });
   return (
     <div>
       {users.map((user) => (
         <p>{user.exercises.map((exercise) => exercise.name)}</p>
       ))}
       <Button className="bg-red-500" onClick={() => console.log("test")}>
-        <p>Hello</p>
+        Hello
       </Button>
       <Button onClick={() => setIsModalOpen(true)}>Open Modal</Button>
       <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}>
