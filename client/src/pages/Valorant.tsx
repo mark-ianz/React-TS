@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -36,20 +37,27 @@ export default function Valorant({}: Props) {
   return (
     <main className="p-10">
       <p>Valorant</p>
-      <div>
+      <section>
         <ul className="grid grid-cols-5 gap-4">
           {agents?.map((agent) => (
-            <li key={agent.uuid} className="flex flex-col border items-center rounded-md shadow-md p-4">
-              <img
-                src={agent.displayIcon}
-                alt={agent.displayName + "display icon"}
-                className="w-40 border rounded-full"
-              />
-              <p className="font-semibold mt-4 text-xl">{agent.displayName}</p>
+            <li key={agent.uuid} className="rounded-md shadow-md">
+              <Link
+                to={"/valorant/agent/" + agent.uuid}
+                className="p-4 flex flex-col border items-center "
+              >
+                <img
+                  src={agent.displayIcon}
+                  alt={agent.displayName + "display icon"}
+                  className="w-40 border rounded-full"
+                />
+                <p className="font-semibold mt-4 text-xl">
+                  {agent.displayName}
+                </p>
+              </Link>
             </li>
           ))}
         </ul>
-      </div>
+      </section>
     </main>
   );
 }

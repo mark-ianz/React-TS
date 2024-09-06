@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./Layout.tsx";
 import LandingPage from "./pages/LandingPage.tsx";
 import Valorant from "./pages/Valorant.tsx";
+import ViewAgent from "./pages/ViewAgent.tsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "valorant",
         element: <Valorant />,
+      },
+      {
+        path: "valorant/agent/:uuid",
+        element: <ViewAgent />,
       },
     ],
   },
