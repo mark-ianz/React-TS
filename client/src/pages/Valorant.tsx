@@ -6,6 +6,7 @@ type Agents = {
   uuid: string;
   displayName: string;
   description: string;
+  displayIcon: string;
 };
 
 type ApiResponse = {
@@ -25,6 +26,7 @@ export default function Valorant({}: Props) {
         return console.log("There was an error!");
       }
 
+      console.log(data);
       setAgents(data);
     };
 
@@ -32,13 +34,22 @@ export default function Valorant({}: Props) {
   }, []);
 
   return (
-    <div>
+    <main className="p-10">
       <p>Valorant</p>
       <div>
-        {agents?.map((agent) => (
-          <p key={agent.uuid}>{agent.displayName}</p>
-        ))}
+        <ul className="grid grid-cols-5 gap-4">
+          {agents?.map((agent) => (
+            <li key={agent.uuid} className="flex flex-col border items-center rounded-md shadow-md p-4">
+              <img
+                src={agent.displayIcon}
+                alt={agent.displayName + "display icon"}
+                className="w-40 border rounded-full"
+              />
+              <p className="font-semibold mt-4 text-xl">{agent.displayName}</p>
+            </li>
+          ))}
+        </ul>
       </div>
-    </div>
+    </main>
   );
 }
