@@ -20,17 +20,6 @@ type Product = {
 export default function ShopLandingPage({}: Props) {
   const [products, setProducts] = useState<Product[]>([]);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await fetch("https://api.escuelajs.co/api/v1/products");
-      const result = await response.json();
-      setProducts(result);
-      console.log(result);
-    };
-
-    fetchProducts();
-  }, []);
-
   return (
     <main>
       <section>
