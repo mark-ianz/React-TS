@@ -5,6 +5,8 @@ type Props = {};
 
 export default function LandingPage({}: Props) {
   const navigate = useNavigate ();
+
+  
   return (
     <div>
       <h1>Hello welcome!</h1>
