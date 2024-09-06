@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import { Outlet } from "react-router-dom";
 
-type Props = {}
-
-export default function ShopLayout({}: Props) {
+export default function ShopLayout() {
   return (
-    <div>ShopLayout</div>
-  )
+    <div>
+      <Outlet />
+    </div>
+  );
 }

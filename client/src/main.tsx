@@ -8,6 +8,7 @@ import LandingPage from "./pages/default/LandingPage.tsx";
 import Valorant from "./pages/default/Valorant.tsx";
 import ViewAgent from "./pages/default/ViewAgent.tsx";
 import ShopLayout from "./Layouts/ShopLayout.tsx";
+import ShopLandingPage from "./pages/shop/ShopLandingPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,12 @@ const router = createBrowserRouter([
   {
     path: "/shop",
     element: <ShopLayout />,
+    children: [
+      {
+        index: true,
+        element: <ShopLandingPage />,
+      },
+    ],
   },
 ]);
 
