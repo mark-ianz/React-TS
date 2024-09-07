@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import Button from "../../components/Button";
 import Modal from "../../components/Modal";
 import GuessTheWord from "../../components/GuessTheWord";
@@ -18,6 +18,7 @@ type Exercise = {
 };
 
 type UserProps = {
+  id: string;
   username: string;
   exercises: Exercise[];
   age: number;
@@ -37,6 +38,7 @@ const App = () => {
 
   const [users, _] = useState<UserProps[]>([
     {
+      id: "1",
       username: "hi,",
       exercises: [
         {
@@ -69,10 +71,35 @@ const App = () => {
     },
   ]);
 
+  // Count With Reducer
+
+  type Count = { count: number };
+
+  const countInitialState: Count = { count: 0 };
+
+  type CountActionType = {
+    type: "increment" | "decrement";
+  };
+
+  const countReducer = (state: Count, action: CountActionType) => {
+    switch (action.type) {
+      case "increment":
+        return {
+          count: state.count + 1,
+        };
+      case "decrement":
+        return {
+          count: state.count - 1,
+        };
+    }
+  };
+
+  const [{ count }, dispatch] = useReducer(countReducer, countInitialState);
+
   return (
     <div>
       {users.map((user) => (
-        <p>{user.exercises.map((exercise) => exercise.name)}</p>
+        <p key={user.id}>{user.exercises.map((exercise) => exercise.name)}</p>
       ))}
       <Button className="bg-red-500" onClick={() => console.log("test")}>
         Hello
@@ -86,6 +113,10 @@ const App = () => {
       <Button onClick={() => setCounter((c) => c + 1)}>Plus Count</Button>
       <GuessTheWord />
       <p>Hi test</p>
+      <h1>Using Reducer on Counter!</h1>
+      <Button onClick={() => dispatch({ type: "increment" })}>Plus</Button>
+      <p>{count}</p>
+      <Button onClick={() => dispatch({ type: "decrement" })}>Minus</Button>
     </div>
   );
 };
